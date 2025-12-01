@@ -1,0 +1,18 @@
+#=============================================
+# see: .claude/mount/home/(dot)claude/HOWTO.md
+#=============================================
+#   npm install -g @anthropic-ai/claude-code
+#   claude migrate-installer
+#=============================================
+
+# Ensure you have this set *before* you install Claude.
+# This will ensure ~/.claude.json is instead placed at ~/.claude/.claude.json
+export CLAUDE_CONFIG_DIR=/home/vscode/.claude
+
+# After Claude is installed locally via `claude migrate-installer`, this makes the `claude` command available.
+#   The PATH is the primary way to enable it. 
+#   The alias makes `claude doctor` happy -- it emits a false positive warning if the alias doesn't exist.
+if [ -x /home/vscode/.claude/local/claude ]; then
+    export PATH="$HOME/.claude/local:$PATH"
+    alias claude="/home/vscode/.claude/local/claude"
+fi
