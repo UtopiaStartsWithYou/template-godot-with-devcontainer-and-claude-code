@@ -1,0 +1,97 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/typescript-node
+
+{
+	"name": "You've Got Packages To Deliver In Space! - Devcontainer",
+
+	//-----------------------------------------------------------------------------------------------
+	// direct image here,
+	//-----------------------------------------------------------------------------------------------
+	// "image": "mcr.microsoft.com/devcontainers/base:debian",
+
+	//-----------------------------------------------------------------------------------------------
+	// or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
+	//-----------------------------------------------------------------------------------------------
+	"build": {
+		"dockerfile": "Dockerfile"
+	},
+
+	//----------------------------------------------------------------------------------
+	// Features to add to the dev container. More info: https://containers.dev/features.
+	//----------------------------------------------------------------------------------
+	// "features": {},
+	"features": {
+		"ghcr.io/devcontainers/features/node:1": {
+			"version": "lts"
+		}
+	},
+
+	//-----------------------------------------------------------------------------------
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	//-----------------------------------------------------------------------------------
+	"forwardPorts": [],
+	"portsAttributes": {},
+
+	//------------------------------------------------------------------------
+	// Use 'postCreateCommand' to run commands after the container is created.
+	//------------------------------------------------------------------------
+	"postCreateCommand": [],
+	"containerEnv": {},
+
+
+
+	//--------------------------------------------------------------------
+	// Mount directories for persistent Claude config and project settings
+	//--------------------------------------------------------------------
+	"mounts": [
+		// ~/.bash_history
+		"source=${localWorkspaceFolder}/.devcontainer/mount/home/.bash_history,target=/home/vscode/.bash_history,type=bind,consistency=cached",
+		"source=${localWorkspaceFolder}/.devcontainer/mount/home/.bashrc,target=/home/vscode/.bashrc,type=bind,consistency=cached",
+		"source=${localWorkspaceFolder}/.devcontainer/mount/home/.bashrc__custom,target=/home/vscode/.bashrc__custom,type=bind,consistency=cached",
+
+		// ---------------------------------------------------------------------------------------------------
+		// <project>/.claude/mount/*   ->   ~/.claude   +   ~/.claude.json   +   ~/.claude.json.backup
+		// ---------------------------------------------------------------------------------------------------
+		"source=${localWorkspaceFolder}/.claude/mount/home/(dot)claude,target=/home/vscode/.claude,type=bind,consistency=cached",
+		// "source=${localWorkspaceFolder}/.claude/mount/home/(dot)claude.json,target=/home/vscode/.claude.json,type=bind,consistency=cached",
+		// "source=${localWorkspaceFolder}/.claude/mount/home/(dot)claude.json.backup,target=/home/vscode/.claude.json.backup,type=bind,consistency=cached",
+
+		// ---------------------------------------------------------------------------------------------------
+		// mount Godot binary
+		// ---------------------------------------------------------------------------------------------------
+		"source=${localWorkspaceFolder}/.devcontainer/mount/godot-binary/Godot_v4.5-stable_linux.x86_64,target=/usr/local/bin/godot,type=bind,consistency=cached"
+
+		// ---------------------------------------------------------------------------------------------------
+		// MCP Servers
+		// ---------------------------------------------------------------------------------------------------
+		// "source=${localWorkspaceFolder}/.devcontainer/mount/godot-mcp,target=/opt/godot-mcp,type=bind,consistency=cached",
+	],
+
+	// Configure tool-specific properties.
+	// "customizations": {},
+
+	// No API key needed - Claude Code uses browser auth
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"Anthropic.claude-code",
+				"ms-python.python",
+				"SolarLiner.linux-themes",
+				"johnnywong.quick-replace-in-selection",
+				"shd101wyy.markdown-preview-enhanced",
+				"geequlim.godot-tools"
+			],
+			"settings": {
+				"workbench.colorTheme": "Ambiance [beta]",
+				"workbench.colorCustomizations": {
+					"tab.activeBackground": "#5f4a8186",
+					"activityBar.inactiveForeground": "#6d7c87e1",
+					"activityBar.background": "#384c896b",
+					"statusBar.background": "#113d4b",
+					"statusBarItem.remoteBackground": "#3db36e86"
+				}
+			}
+		}
+	}
+
+}

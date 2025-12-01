@@ -1,0 +1,39 @@
+
+#-------------------------------------------------------------------------
+# Ensure we do not track the .claude/mount dir
+# but we want an empty folder at .claude/mount/home/(dot)claude/
+# so we'll add a basic HOWTO.md to it to ensure the structure is portable.
+#-------------------------------------------------------------------------
+.claude/mount/**
+!.claude/mount/home/
+!.claude/mount/home/(dot)claude/
+!.claude/mount/home/(dot)claude/HOWTO.md
+
+
+#------------------------------------------------------------------------------
+# Git ignored to reduce repo filesize.
+#
+# Manually download the linux Godot binary and place here,
+# then update the devcontainer.json to bind mount it into the Docker Container.
+#------------------------------------------------------------------------------
+.devcontainer/mount/godot-binary/Godot_v4.5-stable_linux.x86_64
+.devcontainer/mount/godot-binary/Godot_*
+
+
+#---------------------------------------------------------------------
+# We need a file here for the bind mount, so we did an initial commit,
+# but you can remove this from .gitignore to start tracking
+#---------------------------------------------------------------------
+# .devcontainer/mount/home/.bash_history
+
+
+# Keep this at the very very bottom for safety:
+#------------------------------------------------------------------------------
+# ⚠️ NEVER COMMIT THESE -- They contain auth tokens / passwords / user ids! ⚠️
+#------------------------------------------------------------------------------
+.claude/mount/home/(dot)claude/.claude.json
+.claude/mount/home/(dot)claude/.claude.json.backup
+.claude/mount/home/(dot)claude/.credentials.json
+#------------------------------------------------------------------------------
+# ⚠️ NEVER COMMIT THESE -- They contain auth tokens / passwords / user ids! ⚠️
+#------------------------------------------------------------------------------

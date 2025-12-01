@@ -1,0 +1,15 @@
+# allow bash history
+PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
+
+# alias python=python3  # <-- This works but is hacky. Do it the right way with symlinks if you have a larger project; else some syntaxes will make dynamic resolution fail.
+
+
+echo
+echo '     ╭──────────────────────╮     '
+echo '     │                      │     '
+echo '     │  :: Welcome Back ::  │     '
+echo '     │                      │     '
+echo '     ╰──────────────────────╯     '
+echo
+pwd
+echo
