@@ -20,13 +20,6 @@
 .devcontainer/mount/godot-binary/Godot_*
 
 
-#---------------------------------------------------------------------
-# We need a file here for the bind mount, so we did an initial commit,
-# but you can remove this from .gitignore to start tracking
-#---------------------------------------------------------------------
-# .devcontainer/mount/home/.bash_history
-
-
 # Keep this at the very very bottom for safety:
 #------------------------------------------------------------------------------
 # ⚠️ NEVER COMMIT THESE -- They contain auth tokens / passwords / user ids! ⚠️
